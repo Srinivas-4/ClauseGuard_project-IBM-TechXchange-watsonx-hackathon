@@ -30,6 +30,10 @@ It integrates with Watson Orchestrate via an OpenAPI spec and a custom workflow 
 ## Demo
 
 
+https://github.com/user-attachments/assets/525d9184-00af-4ba9-b9be-992fd84388db
+
+
+
 ## Hackathon Info
 - Submitted to: IBM TechXchange 2025 Pre-conference watsonx Hackathon  
 
