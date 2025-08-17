@@ -1,58 +1,37 @@
-ClauseGuard 🛡️
+# ClauseGuard - IBM TechXchange 2025 watsonx hackathon project
 
-ClauseGuard is an AI-powered contract assistant built for the IBM TechXchange 2025 Pre-conference watsonx Hackathon.
-It integrates with Watson Orchestrate via an OpenAPI spec and custom workflow to:
+ClauseGuard is an AI-powered contract assistant built for the IBM TechXchange 2025 Pre-conference watsonx Hackathon.  
+It integrates with Watson Orchestrate via an OpenAPI spec and a custom workflow to:
 
-📌 Classify a contract clause
+- Classify a contract clause  
+- Assess its risk with explanation  
+- Suggest a safer/clearer rewrite  
 
-⚖️ Assess its risk with explanation
+## Features
+- OpenAPI backend (`openapi.yaml`) with 3 endpoints: `/classify`, `/risk`, `/rewrite`  
+- Imported into Watson Orchestrate as tools  
+- Behavior workflow that chains the tools automatically  
+- End-to-end clause analysis with a single input  
 
-✍️ Suggest a safer/clearer rewrite
+## Tech Stack
+- Watson Orchestrate  
+- OpenAPI 3.0 (FastAPI backend)  
+- ngrok (tunnel for local API)  
+- Python  
 
-🚀 Features
 
-Simple OpenAPI backend (openapi.yaml) with 3 endpoints: /classify, /risk, /rewrite
+## How It Works
+1. Import `openapi.yaml` into Watson Orchestrate.  
+2. Add the three tools (`/classify`, `/risk`, `/rewrite`) to your toolset.  
+3. Create a new Behavior in Watson Orchestrate and paste `behavior_instructions.txt`.  
+4. Deploy the agent.  
+5. Provide a contract clause as input and receive classification, risk analysis, and a rewrite.  
 
-Deployed to Watson Orchestrate as tools using the OpenAPI import feature
+## Demo
 
-Behavior workflow that chains tools automatically for end-to-end analysis
 
-Fully interactive Orchestrate agent: just paste a clause and get instant results
+## Hackathon Info
+- Submitted to: IBM TechXchange 2025 Pre-conference watsonx Hackathon  
 
-🛠️ Tech Stack
-
-Watson Orchestrate
-
-Custom API (OpenAPI 3.0 spec)
-
-ngrok (for tunneling local server to cloud)
-
-Python / FastAPI (backend implementation)
-
-📂 Project Structure
-ClauseGuard/
-│── openapi.yaml               # API specification for Watson Orchestrate
-│── behavior_instructions.txt  # Workflow instructions for Orchestrate
-│── screenshots/               # Demo screenshots
-│── demo_video.mp4             # (Optional) Recorded demo video
-│── README.md                  # Project documentation
-
-⚡ How It Works
-
-Import openapi.yaml into Watson Orchestrate → tools /classify, /risk, /rewrite become available
-
-Add these tools to your Toolset
-
-Create a new Behavior using behavior_instructions.txt
-
-Deploy the agent → test by pasting any contract clause
-
-Get instant classification, risk analysis, and rewrite suggestion
-
-🎥 Demo
-
-(Insert link to Loom/YouTube video here)
-
-🏆 Hackathon Info
-
-Submitted to: IBM TechXchange 2025 Pre-conference watsonx Hackathon
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
