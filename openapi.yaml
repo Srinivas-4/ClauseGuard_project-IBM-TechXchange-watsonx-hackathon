@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Clause Guard API
+  version: 1.0.0
+servers:
+  - url: https://3881e563d104.ngrok-free.app
+    description: Ngrok tunnel to local API
+paths:
+  /:
+    get:
+      summary: Root endpoint
+      responses:
+        '200':
+          description: Successful Response
+
+  /docs:
+    get:
+      summary: Swagger UI
+      responses:
+        '200':
+          description: API Documentation
+
+  /openapi.json:
+    get:
+      summary: OpenAPI JSON
+      responses:
+        '200':
+          description: OpenAPI schema
+
+  /classify:
+    post:
+      summary: Classify a clause
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clause:
+                  type: string
+                  example: "The company is not liable for any indirect damages."
+      responses:
+        '200':
+          description: Classification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  category:
+                    type: string
+                    example: "Liability"
+
+  /risk:
+    post:
+      summary: Assess the risk of a clause
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clause:
+                  type: string
+                  example: "The supplier may terminate the agreement at any time without prior notice."
+      responses:
+        '200':
+          description: Risk assessment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  risk_level:
+                    type: string
+                    example: "Low"
+                  explanation:
+                    type: string
+                    example: "Clause is standard and low risk."
+
+  /rewrite:
+    post:
+      summary: Rewrite a clause for clarity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clause:
+                  type: string
+                  example: "The customer waives all rights to claim compensation for service failures."
+      responses:
+        '200':
+          description: Suggested rewrite
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suggestion:
+                    type: string
+                    example: "Suggested clearer wording for clause: ..."

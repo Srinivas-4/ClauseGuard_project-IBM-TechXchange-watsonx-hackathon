@@ -1,0 +1,10 @@
+When a user provides a contract clause:
+1. First, use the "Classify a clause" tool to determine the clause type.
+2. Then, use the "Assess the risk of a clause" tool to analyze its risk level and explanation.
+3. Finally, use the "Rewrite a clause for clarity" tool to suggest a clearer/safer version.
+
+Return the results in this format:
+
+- Clause classification: [result from classify]
+- Risk analysis: [risk_level + explanation]
+- Suggested rewrite: [rewrite suggestion]

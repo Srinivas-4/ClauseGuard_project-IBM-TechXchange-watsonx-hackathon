@@ -1,0 +1,90 @@
+openapi: "3.0.0"
+info:
+  title: Clause Guard API
+  version: 1.0.0
+  description: API that provides contract clause classification, risk analysis, and rewrite suggestions.
+
+servers:
+  - url: http://localhost:5000  # Replace with your actual API server URL
+
+paths:
+  /classify:
+    post:
+      summary: Classify a contract clause
+      description: Classifies a contract clause by type, obligations, and party favored.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clause:
+                  type: string
+                  description: The contract clause text to classify.
+      responses:
+        "200":
+          description: Classification result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  classification:
+                    type: string
+                    example: "Payment Obligation"
+
+  /risk:
+    post:
+      summary: Analyze clause risk
+      description: Rates a clause as Low, Medium, or High risk and explains briefly.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clause:
+                  type: string
+                  description: The contract clause text to analyze.
+      responses:
+        "200":
+          description: Risk analysis result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  risk_level:
+                    type: string
+                    example: "High"
+                  explanation:
+                    type: string
+                    example: "This clause puts significant liability on the client."
+
+  /rewrite:
+    post:
+      summary: Suggest safer/clearer wording for a clause
+      description: Suggests safer and clearer wording while keeping the original meaning.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clause:
+                  type: string
+                  description: The contract clause text to rewrite.
+      responses:
+        "200":
+          description: Rewrite suggestion
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suggestion:
+                    type: string
+                    example: "The supplier shall make best efforts to deliver on time, but delays caused by force majeure will not incur penalties."
